@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="diseño.css"> <!-- Asegúrate de que este archivo contenga el CSS deseado -->
+    <title>DIA DEL AMOR Y LA AMISTAD</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ff7e5f, #feb47b); /* Degradado de colores cálidos */
+            font-family: 'Arial', sans-serif;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff6f61; /* Color de fondo del botón */
+            color: white; /* Color del texto del botón */
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        button:hover {
+            background-color: #ff4c3b; /* Color de fondo al pasar el mouse */
+        }
+        #si {
+            transition: transform 0.2s;
+        }
+        #mensaje {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #fff; /* Color del texto del mensaje */
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente */
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #imagen {
+            margin-top: 20px;
+            max-width: 300px; /* Ajusta el tamaño máximo de la imagen */
+            border-radius: 10px; /* Bordes redondeados para la imagen */
+        }
+        #mensajeNo {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #fff; /* Color del texto del mensaje "No" */
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: white; text-align: center; margin-bottom: 20px;">¿QUIERES SER MI SAN VALENTIN?</h1>
+    <button id="si">Sí</button>
+    <button id="no">No</button>
+    <div id="mensaje"></div>
+    <div id="mensajeNo"></div> <!-- Div para el mensaje "No" -->
+    <img id="imagen" src="" alt="Imagen aleatoria" style="display: none;">
+
+    <script>
+        const botonSi = document.getElementById('si');
+        const botonNo = document.getElementById('no');
+        const mensajeDiv = document.getElementById('mensaje');
+        const mensajeNoDiv = document.getElementById('mensajeNo'); // Div para el mensaje "No"
+        const imagen = document.getElementById('imagen');
+
+        // Array de rutas de imágenes
+        const imagenes = [
+            'imagenes/t1.gif',
+            'imagenes/t2.png',
+            'imagenes/t3.gif',
+            'imagenes/t4.gif'
+        ];
+        const imagenesf = [
+            'imagenes/f1.gif'
+        ];
+
+        botonNo.addEventListener('click', () => {
+            // Aumentar el tamaño del botón "Sí"
+            const currentSize = parseFloat(getComputedStyle(botonSi).fontSize);
+            botonSi.style.fontSize = (currentSize * 1.2) + 'px'; // Aumenta el tamaño en un 20%
+
+            // Seleccionar una imagen aleatoria
+            const randomIndex = Math.floor(Math.random() * imagenes.length);
+            imagen.src = imagenes[randomIndex];
+            imagen.style.display = 'block'; // Mostrar la imagen
+
+            // Mostrar mensaje "¿Por qué nooo?"
+            mensajeNoDiv.textContent = "¿Por qué nooo?";
+            mensajeDiv.textContent = "";
+        });
+
+        botonSi.addEventListener('click', () => {
+            // Mostrar mensaje al hacer clic en "Sí"
+            mensajeDiv.textContent = "Sabía que ibas a decir que sí chaparrita";
+
+            // Seleccionar una imagen aleatoria al hacer clic en "Sí"
+            const randomIndex = Math.floor(Math.random() * imagenesf.length);
+            imagen.src = imagenesf[randomIndex];
+            imagen.style.display = 'block'; // Mostrar la imagen
+
+            // Limpiar el mensaje "No"
+            mensajeNoDiv.textContent = ""; 
+        });
+    </script>
+
+</body>
+</html>
